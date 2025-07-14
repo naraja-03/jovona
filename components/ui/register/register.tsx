@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 import { useRegisterMutation } from '@/store/api/authApi';
+import { loginSuccess } from '@/store/slices/authSlice';
 
 export default function RegisterPage() {
     const [formData, setFormData] = useState({
@@ -16,6 +18,7 @@ export default function RegisterPage() {
     const [showPassword, setShowPassword] = useState(false);
 
     const router = useRouter();
+    const dispatch = useDispatch();
     const [register, { isLoading }] = useRegisterMutation();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,13 +43,20 @@ export default function RegisterPage() {
         }
 
         try {
-            await register({
+            const result = await register({
                 name: formData.name,
                 email: formData.email,
                 password: formData.password
             }).unwrap();
 
-            router.push('/login');
+            // Auto-login after successful registration
+            dispatch(loginSuccess({
+                user: result.user,
+                token: result.user.token
+            }));
+
+            localStorage.setItem('token', result.user.token);
+            router.push('/dashboard');
         } catch (err: unknown) {
             const error = err as { data?: { error?: string } };
             setError(error?.data?.error || 'Registration failed. Please try again.');

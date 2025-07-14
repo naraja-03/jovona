@@ -18,8 +18,8 @@ interface LoginResponse {
     profileImage?: string;
     familyId?: string;
     families: string[];
+    token: string;
   };
-  token: string;
 }
 
 // POST /api/auth/login - User login
@@ -78,9 +78,9 @@ export async function POST(request: NextRequest) {
         role: user.role,
         profileImage: user.profileImage,
         familyId: user.familyId?.toString(),
-        families: (user.families || []).map(String)
-      },
-      token
+        families: (user.families || []).map(String),
+        token
+      }
     };
 
     return NextResponse.json(response);

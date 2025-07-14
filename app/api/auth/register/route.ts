@@ -21,8 +21,8 @@ interface RegisterResponse {
     profileImage?: string;
     familyId?: string;
     families: string[];
+    token: string;
   };
-  token: string;
 }
 
 // POST /api/auth/register - User registration
@@ -103,9 +103,9 @@ export async function POST(request: NextRequest) {
         role: savedUser.role,
         profileImage: savedUser.profileImage,
         familyId: savedUser.familyId?.toString(),
-        families: (savedUser.families || []).map(String)
-      },
-      token
+        families: (savedUser.families || []).map(String),
+        token
+      }
     };
 
     return NextResponse.json(response, { status: 201 });

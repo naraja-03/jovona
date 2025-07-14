@@ -8,7 +8,8 @@ export interface User {
   profileImage?: string;
   role: 'admin' | 'member' | 'view-only';
   familyId?: string;
-  families: string[]; 
+  families: string[];
+  token: string;
 }
 
 export interface LoginRequest {
@@ -24,7 +25,6 @@ export interface RegisterRequest {
 
 export interface AuthResponse {
   user: User;
-  token: string;
 }
 
 export const authApi = createApi({
