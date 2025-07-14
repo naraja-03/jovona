@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Eye, EyeOff, Mail, Lock, User, UserPlus } from 'lucide-react';
 import { useRegisterMutation } from '@/store/api/authApi';
 import { loginSuccess } from '@/store/slices/authSlice';
+import Link from 'next/link';
 
 export default function RegisterPage() {
     const [formData, setFormData] = useState({
@@ -226,10 +227,9 @@ export default function RegisterPage() {
                 {/* Footer */}
                 <div className="text-center mt-8">
                     <p className="text-gray-400 text-sm">
-                        Already have an account?{' '}
-                        <a href="/login" className="text-white hover:text-gray-300 font-medium transition-colors">
+                        <Link href="/login" className="text-white hover:text-gray-300 font-medium transition-colors">
                             Sign in
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>

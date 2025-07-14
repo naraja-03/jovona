@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Eye, EyeOff, Mail, Lock, LogIn } from 'lucide-react';
 import { useLoginMutation } from '@/store/api/authApi';
 import { loginSuccess } from '@/store/slices/authSlice';
+import Link from 'next/link';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('raja@example.com');
@@ -187,10 +188,9 @@ export default function LoginPage() {
                 {/* Footer */}
                 <div className="text-center mt-8">
                     <p className="text-gray-400 text-sm">
-                        Don&apos;t have an account?{' '}
-                        <a href="/register" className="text-white hover:text-gray-300 font-medium transition-colors">
+                        <Link href="/register" className="text-white hover:text-gray-300 font-medium transition-colors">
                             Sign up
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>
