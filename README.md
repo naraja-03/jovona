@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Boilerplate
 
-## Getting Started
+A clean, production-ready Next.js boilerplate with authentication, database integration, and modern tooling.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- ⚡ **Next.js 15** with App Router
+- 🔐 **Authentication System** (JWT + MongoDB)
+- 🗄️ **Database Integration** (MongoDB + Mongoose)
+- 🎨 **Modern UI** with Tailwind CSS
+- 📦 **State Management** with Redux Toolkit + RTK Query
+- 🔧 **Git Hooks** (Husky + Lint-staged)
+- 📝 **Code Quality** (ESLint + Prettier + TypeScript)
+- 🚀 **Firebase Ready** (configuration included)
+
+## Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/naraja-03/jovona.git
+   cd jovona
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env .env.local
+   ```
+   Update the values in `.env.local`:
+   - `MONGODB_URI`: Your MongoDB connection string
+   - `JWT_SECRET`: A secure JWT secret (min 32 characters)
+   - Firebase configuration (optional)
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix ESLint issues
+- `npm run format` - Format code with Prettier
+- `npm run type-check` - Run TypeScript type checking
+- `npm run commit` - Interactive commit with conventional format
+
+## Project Structure
+
+```
+├── app/                    # Next.js App Router pages
+│   ├── api/               # API routes
+│   ├── login/             # Login page
+│   ├── register/          # Register page
+│   └── dashboard/         # Protected dashboard
+├── components/            # React components
+│   ├── ui/               # UI components
+│   ├── AppLayout.tsx     # Main layout wrapper
+│   └── AuthGuard.tsx     # Route protection
+├── store/                # Redux store
+│   ├── api/              # RTK Query APIs
+│   └── slices/           # Redux slices
+├── lib/                  # Utilities
+├── models/               # Database models
+└── .husky/               # Git hooks
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Authentication
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The boilerplate includes a complete authentication system:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Registration**: Create new user accounts
+- **Login**: JWT-based authentication
+- **Route Protection**: Automatic redirects for protected routes
+- **State Management**: User state persisted in Redux
 
-## Learn More
+## Database
 
-To learn more about Next.js, take a look at the following resources:
+Uses MongoDB with Mongoose for:
+- User management
+- Session handling
+- Data persistence
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Git Hooks
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Pre-configured Git hooks ensure code quality:
+- **Pre-commit**: Runs linting, formatting, and type checking
+- **Commit-msg**: Enforces conventional commit format
+- **Post-commit**: Success notification
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The boilerplate is ready for deployment on:
+- Vercel (recommended for Next.js)
+- Netlify
+- Railway
+- Any Node.js hosting platform
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+1. Use `npm run commit` for properly formatted commit messages
+2. Ensure all tests pass before submitting PRs
+3. Follow the existing code style
+
+## License
+
+MIT License - feel free to use for your projects!
+
+---
+
+Built with ❤️ using Next.js, TypeScript, and modern web technologies.
