@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Post commit actions (optional)
+echo "✅ Commit successful! Don't forget to push your changes."
